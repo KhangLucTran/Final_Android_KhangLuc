@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,7 +25,8 @@ import java.util.regex.Pattern;
 public class ActivityRegister extends AppCompatActivity {
     //Variables
     EditText edtUsername, edtPassword, edtRePass, edtEmail;
-    Button btnRegister, btnGotoLogin;
+    Button btnRegister;
+    TextView txtGotoLogin;
     UserDAO userdao;
     ImageView imgViewUser;
     private static final int REQUEST_PICK_IMAGE = 102;
@@ -38,7 +40,6 @@ public class ActivityRegister extends AppCompatActivity {
         userdao = new UserDAO(this);
         //Mapping UI
         MappingUI();
-        //ImageView click
         imgViewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +85,7 @@ public class ActivityRegister extends AppCompatActivity {
             }
         });
 
-        btnGotoLogin.setOnClickListener(new View.OnClickListener() {
+        txtGotoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
@@ -100,7 +101,7 @@ public class ActivityRegister extends AppCompatActivity {
         edtRePass = findViewById(R.id.edtRePassword);
         edtEmail = findViewById(R.id.edtEmail);
         btnRegister = findViewById(R.id.btnRegister);
-        btnGotoLogin = findViewById(R.id.btnGotoLogin);
+        txtGotoLogin = findViewById(R.id.txtGotoLogin);
         imgViewUser = findViewById(R.id.imgViewUser);
     }
 
