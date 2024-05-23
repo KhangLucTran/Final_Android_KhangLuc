@@ -30,6 +30,7 @@ public class ActivityRegister extends AppCompatActivity {
     UserDAO userdao;
     ImageView imgViewUser;
     private static final int REQUEST_PICK_IMAGE = 102;
+    private static final int REQUEST_CAMERA = 100;
 
 
     @Override
@@ -43,8 +44,11 @@ public class ActivityRegister extends AppCompatActivity {
         imgViewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mayChuphinh = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(mayChuphinh, REQUEST_PICK_IMAGE);
+//                Intent mayChuphinh = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(mayChuphinh, REQUEST_PICK_IMAGE);
+
+                Intent mayChup =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(mayChup, REQUEST_CAMERA);
             }
         });
 
@@ -108,7 +112,7 @@ public class ActivityRegister extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+        if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK && data != null) {
             // Hiển thị ảnh trong ImageView
             Uri selectedImageUri = data.getData();
             // Hiển thị ảnh trong ImageView
